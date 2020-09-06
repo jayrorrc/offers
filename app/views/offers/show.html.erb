@@ -1,0 +1,39 @@
+<div class="card">
+  <div class="card-body">
+      <h3><%= @offer.advertiser_name %></h3>
+      <br>
+      <p>
+        <strong>URL:</strong>
+        <%= @offer.url %>
+
+      </p>
+
+      <p>
+        <strong>Description:</strong>
+        <%= @offer.description %>
+      </p>
+
+      <p>
+        <strong>Starts at:</strong>
+        <%= @offer.starts_at %>
+      </p>
+
+      <p>
+        <strong>Ends at:</strong>
+        <% if @offer.ends_at %>
+          <%= @offer.ends_at %>
+        <% else %>
+          Undefined
+        <% end %>
+      </p>
+
+      <p>
+        <strong>Premium:</strong>
+        <% if @offer.premium %>
+          Yes
+        <% else %>
+          No
+        <% end %>
+      </p>
+  </div>
+</div>

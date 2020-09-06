@@ -1,5 +1,5 @@
 class Offer < ApplicationRecord
-  validates :advertiser_name, :url, :description,:starts_at, presence: true
+  validates :advertiser_name, :url, :description, :starts_at, presence: true
   validates :advertiser_name, uniqueness: true
   validates_format_of :url, with: URI.regexp
   validates_length_of :description, maximum: 500
