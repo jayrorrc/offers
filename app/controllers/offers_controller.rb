@@ -49,6 +49,11 @@ class OffersController < ApplicationController
 
     redirect_to offers_path
   end
+
+  def dashboard
+    @offers = Offer.order(premium: :desc).select { |offer| offer.status == 'enabled'}
+  end
+
   private
     def offer_params
       params.require(:offer).permit(

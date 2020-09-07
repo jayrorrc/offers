@@ -7,11 +7,20 @@ FactoryBot.define do
   end
 
   factory :offer_enabled, class: "Offer" do
-    sequence(:advertiser_name) {|n| "Company - #{n}"}
+    sequence(:advertiser_name) {|n| "Company Enabled - #{n}"}
     sequence(:url) {|n| "http://foo#{n}.com" }
     sequence(:description) {|n| "Description - #{n}"}
     starts_at { DateTime.now }
     enable_flag {true}
+  end
+
+  factory :offer_enabled_premium, class: "Offer" do
+    sequence(:advertiser_name) {|n| "Company Enabled Premium - #{n}"}
+    sequence(:url) {|n| "http://foo#{n}.com" }
+    sequence(:description) {|n| "Description - #{n}"}
+    starts_at { DateTime.now }
+    enable_flag {true}
+    premium {true}
   end
 end
 

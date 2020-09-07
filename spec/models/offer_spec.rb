@@ -61,4 +61,29 @@ RSpec.describe Offer, type: :model do
 
     subject.status.should eq('disabled')
   end
+
+  describe "time to end" do
+    it "days" do
+      offer = FactoryBot.create(:offer)
+      offer.ends_at = offer.starts_at + 3.days
+
+      offer.timeToEnd.should eq('2 days')
+    end
+
+    it "hours" do
+      offer = FactoryBot.create(:offer)
+      offer.ends_at = offer.starts_at + 3.hours
+
+      offer.timeToEnd.should eq('Less than 24 hours')
+    end
+  end
+
+  it "percent of offer" do
+    offer = FactoryBot.create(:offer)
+    offer.ends_at = offer.starts_at + 5.day
+    offer.starts_at = offer.starts_at - 5.day
+
+    offer.porcent.should be > 50
+    offer.porcent.should be < 60
+  end
 end

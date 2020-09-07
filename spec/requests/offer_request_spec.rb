@@ -25,7 +25,7 @@ RSpec.describe OffersController, type: :request do
       post offers_path, :params => {
         :offer => {
           :advertiser_name => 'Company Name',
-          :url => 'http://foo#{n}.com',
+          :url => 'http://foo.com',
           :description => 'Description',
           :starts_at => DateTime.now
         }
@@ -37,6 +37,25 @@ RSpec.describe OffersController, type: :request do
       follow_redirect!
 
       expect(response).to render_template(:index)
+    end
+
+    it "creating a invalid offer" do
+      get new_offer_path
+      expect(response).to render_template(:new)
+
+      offer = FactoryBot.json(:offer)
+
+      post offers_path, :params => {
+        :offer => {
+          :advertiser_name => 'Company Name',
+          :url => 'foo',
+          :description => 'Description',
+          :starts_at => DateTime.now
+        }
+      }
+
+      expect(response).to have_http_status(:ok)
+      expect(response).to render_template(:new)
     end
 
     it "renders the index template" do
@@ -112,6 +131,22 @@ RSpec.describe OffersController, type: :request do
 
       expect(assigns(:offers)).to match_array(offers)
       expect(assigns(:offers).count).to eq(number_offers -1)
+    end
+  end
+
+  describe "GET #dashboard" do
+    it "must to be enabled offers with the premiuns first" do
+      offers = FactoryBot.create_list(:offer_enabled, 10)
+      offers_premium = FactoryBot.create_list(:offer_enabled_premium, 10)
+
+      number_offers = offers.count + offers_premium.count
+
+      get root_path
+      expect(assigns(:offers)).to eq(offers_premium.concat(offers))
+      expect(assigns(:offers).count).to eq(number_offers)
+
+      expect(response).to render_template(:dashboard)
+
     end
   end
 end

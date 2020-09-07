@@ -16,3 +16,44 @@
     margin: 0px;
   }
 }
+
+.row {
+  .col-xs-6.col-lg-4 {
+    margin-bottom: 1rem;
+
+    .card {
+      width: fit-content;
+      margin: auto;
+
+      span {
+        margin-left: auto;
+        border-radius: 1rem;
+        position: relative;
+        top: -1rem;
+        right: -1rem;
+
+        h5 {
+          font-size: 3vw;
+          position: relative;
+          top: 4px;
+          padding-left: 4px;
+          padding-right: 4px;
+        }
+      }
+
+      .card-body {
+        font-size: 5vw;
+        text-align: center;
+
+        a.btn.btn-lg {
+          font-size: 4vw;
+        }
+      }
+
+
+      .progress {
+        margin-top: 1em;
+      }
+    }
+  }
+}

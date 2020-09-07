@@ -19,4 +19,33 @@ class Offer < ApplicationRecord
 
     'disabled'
   end
+
+  def timeToEnd
+    if ends_at.nil?
+      return 'Undefined'
+    end
+
+    time = ((ends_at.to_time - DateTime.now.to_time) / 86400).to_i
+
+    if time > 1
+
+      time = time.to_i
+
+      if time == 1
+        return '1 day'
+      end
+
+      return time.to_s + ' days'
+    end
+
+    'Less than 24 hours'
+  end
+
+  def porcent
+    if ends_at.nil?
+      return 'Undefined'
+    end
+
+    (((DateTime.now.to_time - starts_at.to_time) / (ends_at.to_time - starts_at.to_time)) * 100).to_i
+  end
 end
