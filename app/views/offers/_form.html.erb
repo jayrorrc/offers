@@ -1,0 +1,50 @@
+<%= form_with model: @offer, local: true do |form| %>
+
+<% if @offer.errors.any? %>
+  <div class="alert alert-danger" role="alert">
+    <ul>
+      <% @offer.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<div class="form-group">
+  <%= form.label :advertiser_name %><br>
+  <%= form.text_field :advertiser_name, required: true %>
+</div>
+
+<div class="form-group">
+  <%= form.label :url %><br>
+  <%= form.text_field :url, required: true %>
+
+</div>
+
+<div class="form-group">
+  <%= form.label :description %><br>
+  <%= form.text_area :description, required: true %>
+</div>
+
+<div class="form-group">
+  <%= form.label :starts_at %><br>
+  <%= form.date_field :starts_at, required: true %>
+</div>
+
+<div class="form-group">
+  <%= form.label :ends_at %><br>
+  <%= form.date_field :ends_at %>
+</div>
+
+<div class="form-group">
+  <div class="form-check form-check-inline">
+    <%= form.check_box :premium %>
+    &nbsp;
+    <%= form.label :premium %><br>
+  </div>
+</div>
+
+<div class="form-group">
+  <%= form.submit "Submit" %>
+</div>
+<% end %>

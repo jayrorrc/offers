@@ -1,0 +1,59 @@
+// Place all the styles related to the Offer controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+.card {
+  .card-body {
+    margin: auto;
+
+    h3 {
+      text-align: center;
+    }
+  }
+}
+
+.form-check.form-check-inline {
+  label {
+    margin: 0px;
+  }
+}
+
+.row {
+  .col-xs-6.col-lg-4 {
+    margin-bottom: 1rem;
+
+    .card {
+      width: fit-content;
+      margin: auto;
+
+      span {
+        margin-left: auto;
+        border-radius: 1rem;
+        position: relative;
+        top: -1rem;
+        right: -1rem;
+
+        h5 {
+          font-size: 3vw;
+          position: relative;
+          top: 4px;
+          padding-left: 4px;
+          padding-right: 4px;
+        }
+      }
+
+      .card-body {
+        font-size: 5vw;
+        text-align: center;
+
+        a.btn.btn-lg {
+          font-size: 4vw;
+        }
+      }
+
+
+      .progress {
+        margin-top: 1em;
+      }
+    }
+  }
+}

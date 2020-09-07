@@ -1,0 +1,48 @@
+<div class="card">
+  <div class="card-body">
+    <h3 class="card-title">Offers</h3>
+    <br>
+    <div class="container">
+      <div class="row">
+        <% @offers.each do |offer| %>
+          <div class="col-xs-6 col-lg-4">
+            <div class="card h-100">
+
+              <% if offer.premium %>
+                <span class="text-white bg-danger">
+                  <h5>Premium</h5>
+                </span>
+              <%else%>
+                <br><br>
+              <% end %>
+              <div class="card-body">
+                <p class="card-text" >
+                  <%= offer.advertiser_name%>
+                </p>
+                <% css_class = offer.premium ? "btn-success" : "btn-light" %>
+                <%= link_to "Shop Now",
+                  offer.url,
+                  class: "card-link btn btn-default btn-lg #{css_class}"
+                %>
+
+                <% if !offer.ends_at.nil? %>
+                  <div class="progress">
+                    <div class="progress-bar bg-info"
+                      role="progressbar"
+                      style="width: <%= offer.porcent %>%"
+                      aria-valuenow="<%= offer.porcent %>"
+                      aria-valuemin="0"
+                      aria-valuemax="100">
+
+                        <%= offer.timeToEnd %> to end this offer
+                    </div>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
