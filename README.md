@@ -30,6 +30,3 @@ Things you may want to cover:
 
 * Node version
   * v12.18.3
-  
-* Heroku
-  * https://jayrorrc-offers.herokuapp.com/
